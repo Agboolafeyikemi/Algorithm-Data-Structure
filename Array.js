@@ -22,7 +22,7 @@ var duplicateZeros = function (arr) {
 };
 console.log(duplicatesZeros([1, 0, 2, 3, 0, 4, 5, 0])); //[0,0,4,1,0,0,0,0,8][1,0,0,2,3,0,0,4]
 
-// Question 2
+// Question 2:  Merge Sorted Array
 // You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
 
 // Merge nums1 and nums2 into a single array sorted in non-decreasing order.
@@ -46,3 +46,39 @@ var merge = function (nums1, m, nums2, n) {
 console.log(merge([-1, 0, 0, 3, 3, 3, 0, 0, 0], 6, [1, 2, 2], 3)); //[-1,0,0,1,2,2,3,3,3]
 console.log(merge([1, 0], 1, [2], 1)); //[1,2]
 console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3)); //[1,2,2,3,5,6]
+
+// Question: Sort Array By Parity
+
+// Given an integer array nums, move all the even integers at the beginning of the array followed by all the odd integers.
+
+// Return any array that satisfies this condition.
+
+// Example 1:
+
+Input: nums = [3, 1, 2, 4];
+Output: [2, 4, 3, 1];
+// Explanation: The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.
+// Example 2;
+Input: nums = [0];
+Output: [0];
+
+// Solution
+var sortArrayByParity = function (nums) {
+  let newA = nums.filter((num) => num % 2 !== 0);
+  let i = 0;
+  let count = 0;
+
+  while (i < nums.length) {
+    if (nums[i] % 2 !== 0) {
+      let num = nums.splice(i, 1);
+      nums.push(...num);
+      count++;
+      if (newA.length === count) {
+        return nums;
+      }
+    } else {
+      i++;
+    }
+  }
+  return nums;
+};
