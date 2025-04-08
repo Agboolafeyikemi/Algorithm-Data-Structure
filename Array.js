@@ -109,4 +109,19 @@ var findDisappearedNumbers = function (nums) {
 };
 console.log(findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1])); //[5,6], //[2]
 
-// Minimum Number of Operations to Make Elements in Array Distinct
+// Question: Minimum Number of Operations to Make Elements in Array Distinct
+function minimumOperations(nums) {
+  let count = 0;
+
+  while (new Set(nums).size !== nums.length) {
+    console.log(nums);
+    count++;
+    nums.splice(0, 3);
+  }
+
+  return count;
+}
+
+console.log(minimumOperations([1, 2, 3, 4, 2, 3, 3, 5, 7])); //2
+console.log(minimumOperations([4, 5, 6, 4, 4])); //2
+console.log(minimumOperations([6, 7, 8, 9])); //0
